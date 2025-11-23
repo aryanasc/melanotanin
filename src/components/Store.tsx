@@ -1,94 +1,166 @@
-import React, { useState } from 'react';
-import { Search, SlidersHorizontal } from 'lucide-react';
+import React, { useRef, useEffect, useState } from 'react';
+import stickerImage from '../assets/STICKER.png';
 
 interface Product {
   id: string;
   name: string;
   price: number;
   description: string;
-  category: string;
+  features: string[];
   image: string;
+  checkoutUrl: string;
+  servings: string;
 }
 
 const products: Product[] = [
   {
-    id: "melanotanin-original",
-    name: "Melanotanin™ Original",
-    price: 35,
-    description: "The original carotenoid glow protocol. Internal skin tone optimization system.",
-    category: "Glow Enhancement",
-    image: "/src/assets/bottlemain.png"
+    id: "melanotanin-sunless-glow",
+    name: "Melanotanin™ Sunless Glow Blend",
+    price: 39.99,
+    description: "Carotenoid Complex",
+    features: [
+      "Sunless, Natural-Looking Glow*",
+      "Premium Carotenoid Blend",
+      "Supports Skin Radiance & Even Tone*",
+      "Eye Health Support*",
+      "Antioxidants",
+      "No UV Exposure Needed",
+      "Great for Coloring*"
+    ],
+    image: stickerImage,
+    checkoutUrl: "https://melanotanin.org/cart/51455229001959:1",
+    servings: "60 Capsules | 30 Servings"
   }
 ];
 
 const Store: React.FC = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const imageRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [startPos, setStartPos] = useState({ x: 0, y: 0 });
 
-  const filteredProducts = products.filter(product => {
-    const matchesSearch = product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         product.description.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
+  const handleMouseDown = (e: React.MouseEvent) => {
+    setIsDragging(true);
+    setStartPos({
+      x: e.clientX - position.x,
+      y: e.clientY - position.y,
+    });
+  };
 
-  const categories = ['all', ...new Set(products.map(p => p.category))];
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    
+    const newX = e.clientX - startPos.x;
+    const newY = e.clientY - startPos.y;
+    
+    // Limit dragging bounds (increased for more zoom)
+    const maxX = 200;
+    const maxY = 200;
+    
+    setPosition({
+      x: Math.max(-maxX, Math.min(maxX, newX)),
+      y: Math.max(-maxY, Math.min(maxY, newY)),
+    });
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  useEffect(() => {
+    if (isDragging) {
+      document.addEventListener('mouseup', handleMouseUp as any);
+      return () => document.removeEventListener('mouseup', handleMouseUp as any);
+    }
+  }, [isDragging]);
 
   return (
-    <section className="py-20 bg-darker min-h-screen">
+    <section id="store" className="py-20 min-h-screen" style={{ backgroundColor: '#000000' }}>
       <div className="container-section">
         <div className="mb-12">
-          <h2 className="section-title">PROTOCOL STORE</h2>
-          
-          <div className="flex flex-col md:flex-row gap-6 mb-8">
-            <div className="flex-1 relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-accent" size={20} />
-              <input
-                type="text"
-                placeholder="SEARCH PROTOCOLS"
-                className="w-full bg-medium border-2 border-accent/20 py-3 pl-12 pr-4 text-sm focus:outline-none focus:border-accent"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-            </div>
-            
-            <div className="flex items-center gap-4">
-              <SlidersHorizontal className="text-accent" size={20} />
-              <select
-                className="bg-medium border-2 border-accent/20 py-3 px-4 text-sm focus:outline-none focus:border-accent"
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-              >
-                {categories.map(category => (
-                  <option key={category} value={category}>
-                    {category.toUpperCase()}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
+          <h2 className="section-title">AVAILABLE PROTOCOL</h2>
+          <p className="text-sm opacity-70 tracking-wider">PREMIUM CAROTENOID FORMULATION</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredProducts.map(product => (
-            <div key={product.id} className="technical-card group cursor-pointer">
-              <div className="aspect-square mb-4 relative overflow-hidden">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-contain transform transition-transform group-hover:scale-105"
-                />
-              </div>
-              
-              <div className="space-y-2">
-                <div className="technical-tag">{product.category}</div>
-                <h3 className="text-xl">{product.name}</h3>
-                <p className="text-sm opacity-80 line-clamp-2">{product.description}</p>
-                <div className="flex justify-between items-center mt-4">
-                  <div className="text-2xl font-bold text-accent">${product.price}</div>
-                  <button className="btn-primary text-sm">
-                    VIEW PROTOCOL
-                  </button>
+        <div className="max-w-6xl mx-auto">
+          {products.map(product => (
+            <div key={product.id} className="p-6 relative" style={{ backgroundColor: '#000000' }}>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+                {/* Left - Interactive Image Viewer */}
+                <div 
+                  ref={containerRef}
+                  className="relative overflow-hidden flex items-center justify-center aspect-square"
+                  style={{
+                    backgroundColor: '#000000',
+                    cursor: isDragging ? 'grabbing' : 'grab',
+                  }}
+                  onMouseDown={handleMouseDown}
+                  onMouseMove={handleMouseMove}
+                  onMouseLeave={handleMouseUp}
+                >
+                  <div 
+                    ref={imageRef}
+                    className="w-full h-full relative flex items-center justify-center"
+                    style={{
+                      transform: `translate(${position.x}px, ${position.y}px) scale(2)`,
+                      transition: isDragging ? 'none' : 'transform 0.3s ease-out',
+                    }}
+                  >
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-auto object-contain select-none pointer-events-none"
+                      draggable={false}
+                    />
+                  </div>
+                  
+                  {/* Hint overlay */}
+                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-xs opacity-50 pointer-events-none">
+                    <span className="bg-black/50 px-3 py-1 rounded">DRAG TO EXPLORE</span>
+                  </div>
+                </div>
+                
+                {/* Right - Product Info */}
+                <div className="space-y-4 flex flex-col justify-center">
+                  <div>
+                    <h3 className="text-2xl md:text-3xl mb-2">{product.name}</h3>
+                    <p className="text-accent text-lg tracking-wider">{product.description}</p>
+                    <p className="text-sm opacity-70 mt-2">{product.servings}</p>
+                  </div>
+
+                  <div className="border-l-2 border-accent pl-4 space-y-2">
+                    {product.features.map((feature, index) => (
+                      <div key={index} className="text-sm opacity-90">
+                        • {feature}
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="pt-4 border-t border-white/10">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="text-3xl font-bold text-accent">${product.price}</div>
+                      <div className="text-xs opacity-70">DIETARY SUPPLEMENT</div>
+                    </div>
+                    
+                    <a 
+                      href={product.checkoutUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary w-full text-center"
+                    >
+                      CHECKOUT
+                    </a>
+
+                    <div className="mt-4 text-xs opacity-60 text-center">
+                      🔥 FREE SHIPPING ON ORDERS OVER $75 | 90-DAY MONEY BACK GUARANTEE
+                    </div>
+                  </div>
+
+                  <div className="text-xs opacity-50 pt-4 border-t border-white/10">
+                    *These statements have not been evaluated by the Food and Drug Administration. 
+                    This product is not intended to diagnose, treat, cure, or prevent any disease.
+                  </div>
                 </div>
               </div>
             </div>

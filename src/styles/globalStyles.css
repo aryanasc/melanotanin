@@ -72,11 +72,6 @@
   .technical-card {
     @apply bg-darker p-6 relative;
   }
-  
-  .technical-card::before {
-    content: "";
-    @apply absolute top-0 left-0 w-2 h-1/2 bg-accent opacity-80;
-  }
 }
 
 .fade-in {
