@@ -1,12 +1,25 @@
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 const HowItWorks = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     document.title = "How It Works | Melanotanin™";
   }, []);
+
+  const handleShopClick = () => {
+    navigate('/');
+    setTimeout(() => {
+      const storeSection = document.getElementById('store');
+      if (storeSection) {
+        storeSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
 
   return (
     <div className="bg-dark text-white min-h-screen">
@@ -409,9 +422,12 @@ const HowItWorks = () => {
           {/* CTA */}
           <div className="text-center mb-16">
             <h2 className="section-title mb-8">READY TO GLOW?</h2>
-            <a href="/#store" className="btn-primary inline-flex mb-6">
+            <button 
+              onClick={handleShopClick}
+              className="btn-primary inline-flex mb-6"
+            >
               SHOP NOW <ArrowRight size={18} className="ml-2" />
-            </a>
+            </button>
             <p className="text-sm opacity-70">
               60-Day Money-Back Guarantee | Free Shipping Over $75
             </p>
