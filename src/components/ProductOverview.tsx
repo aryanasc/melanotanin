@@ -9,46 +9,46 @@ const ProductOverview: React.FC = () => {
       className="py-20 bg-darker"
     >
       <div className="container-section">
-        <div className="technical-tag">PRODUCT SPECIFICATION</div>
+        <div className="technical-tag">WHAT IT IS</div>
         
         <h2 className="section-title">
-          ENGINEERED INTERNAL AESTHETICS
+          THE SCIENCE BEHIND THE GLOW
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <div>
             <p className="mb-6 leading-relaxed">
-              A precision-engineered carotenoid-based glow supplement formulated to enhance skin tone from within. 
-              Melanotanin™ delivers measurable results through a calibrated dose of natural compounds, 
-              without requiring UV exposure or invasive procedures.
+              Carotenoids are fat-soluble pigments that accumulate in skin tissue. 
+              At clinical doses, they create a visible warm undertone without UV exposure. 
+              The same mechanism that makes flamingos pink and carrots orange — formulated for humans.
             </p>
             
             <p className="text-accent font-bold mb-8">
-              NO SUN. NO SHOTS. JUST MELANOTANIN™.
+              NO SUN. NO SHOTS. JUST GLOW.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="technical-card bg-medium">
                 <Layers className="text-accent mb-4" size={32} />
-                <h3 className="text-lg mb-2">COMPOUND DELIVERY</h3>
+                <h3 className="text-lg mb-2">INTERNAL PIGMENTATION</h3>
                 <p className="text-sm opacity-80">
-                  Advanced absorption technology ensures optimal bioavailability of active compounds.
+                  Carotenoids deposit in subcutaneous fat and accumulate in skin tissue from the inside out.
                 </p>
               </div>
               
               <div className="technical-card bg-medium">
                 <Droplets className="text-accent mb-4" size={32} />
-                <h3 className="text-lg mb-2">SKIN INTEGRATION</h3>
+                <h3 className="text-lg mb-2">CLINICAL DOSES</h3>
                 <p className="text-sm opacity-80">
-                  Carotenoid molecules integrate within the dermal matrix for natural-looking results.
+                  25,000 IU beta-carotene per serving. Not the 2mg garbage in your multivitamin — these are clinical doses.
                 </p>
               </div>
               
               <div className="technical-card bg-medium sm:col-span-2">
                 <Zap className="text-accent mb-4" size={32} />
-                <h3 className="text-lg mb-2">OPTIMIZATION PROTOCOL</h3>
+                <h3 className="text-lg mb-2">ZERO UV REQUIRED</h3>
                 <p className="text-sm opacity-80">
-                  Our proprietary protocol maximizes carotenoid distribution for even, natural-looking skin enhancement.
+                  Your skin color changes based on what you eat. No tanning beds. No sun damage. Just glow.
                 </p>
               </div>
             </div>

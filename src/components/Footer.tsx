@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ChevronRight, Mail, Instagram } from 'lucide-react';
 
 // TikTok SVG Icon Component
@@ -22,7 +23,7 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-xl mb-6">MELANOTANIN<span className="text-xs align-top text-accent">™</span></h3>
             <p className="text-sm opacity-80 max-w-xs">
-              The carotenoid glow protocol. Internal skin tone optimization system for the modern man.
+              The sunless glow supplement. Clinical-dose carotenoids that create a natural-looking glow from within.
             </p>
             
             <div className="flex space-x-4 mt-6">
@@ -52,28 +53,28 @@ const Footer: React.FC = () => {
                 </a>
               </li>
               <li>
-                <a href="#protocol" className="text-sm inline-flex items-center hover:text-accent transition-colors">
-                  <ChevronRight size={16} className="mr-1" /> PROTOCOL
-                </a>
+                <Link to="/how-it-works" className="text-sm inline-flex items-center hover:text-accent transition-colors">
+                  <ChevronRight size={16} className="mr-1" /> HOW IT WORKS
+                </Link>
               </li>
               <li>
-                <a href="#acquire" className="text-sm inline-flex items-center hover:text-accent transition-colors">
-                  <ChevronRight size={16} className="mr-1" /> ACQUIRE
+                <a href="#store" className="text-sm inline-flex items-center hover:text-accent transition-colors">
+                  <ChevronRight size={16} className="mr-1" /> SHOP
                 </a>
               </li>
             </ul>
           </div>
           
           <div>
-            <h3 className="text-lg mb-6">PROTOCOL UPDATES</h3>
+            <h3 className="text-lg mb-6">UPDATES</h3>
             <p className="text-sm opacity-80 mb-4">
-              Sign up to receive updates on formula enhancements and protocol optimization.
+              Sign up to receive updates on formula enhancements and new products.
             </p>
             
             <div className="flex">
               <input 
                 type="email" 
-                placeholder="ENTER EMAIL FOR PROTOCOL UPDATES" 
+                placeholder="ENTER EMAIL FOR UPDATES" 
                 className="bg-dark border-0 py-3 px-4 text-xs focus:outline-none focus:ring-1 focus:ring-accent w-full"
               />
               <button className="bg-accent text-dark px-4">

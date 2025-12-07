@@ -61,7 +61,7 @@ const StickerSection: React.FC = () => {
             <h3 className="text-2xl mb-6">PREMIUM IDENTITY</h3>
             <p className="text-sm opacity-80 leading-relaxed">
               Each bottle comes with our premium identity marker. 
-              A symbol of commitment to the protocol and aesthetic optimization.
+              A symbol of commitment to optimizing your appearance without UV damage.
             </p>
           </div>
         </div>

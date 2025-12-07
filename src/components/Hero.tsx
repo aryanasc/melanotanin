@@ -73,37 +73,37 @@ const Hero: React.FC = () => {
       
       <div className="container-section relative z-10">
         <div className="max-w-3xl">
-          <div className="technical-tag animate-element">INTERNAL FORMULATION</div>
+          <div className="technical-tag animate-element">CLINICAL-DOSE CAROTENOIDS</div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight animate-element">
-            MELANOTANIN<span className="text-xs align-top text-accent">™</span>
+            GLOW FROM WITHIN<span className="text-xs align-top text-accent">™</span>
           </h1>
           
           <h2 className="text-xl md:text-2xl text-accent font-bold tracking-wider mb-6 animate-element">
-            THE CAROTENOID GLOW PROTOCOL
+            NO SUN REQUIRED
           </h2>
           
           <div className="progress-bar mb-8 w-32 animate-element"></div>
           
           <p className="text-sm md:text-base tracking-wide leading-relaxed mb-8 opacity-90 max-w-xl animate-element">
-            INTERNAL SKIN TONE OPTIMIZATION SYSTEM.
-            A TECHNICAL APPROACH TO AESTHETICS WITHOUT UV EXPOSURE.
-            PREMIUM CAROTENOID COMPLEX ENGINEERED FOR MALE ENHANCEMENT.
+            High-dose carotenoids that deposit in your skin and change your undertone from the inside. 
+            The same mechanism that makes flamingos pink and carrots orange — formulated for humans. 
+            Clinical doses that actually work.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 animate-element">
             <a href="#store" className="btn-primary">
-              BROWSE PROTOCOLS <ArrowRight size={18} className="ml-2" />
+              SHOP NOW <ArrowRight size={18} className="ml-2" />
             </a>
-            <a href="#store" className="btn-outline">
-              VIEW STORE
+            <a href="/how-it-works" className="btn-outline">
+              HOW IT WORKS
             </a>
           </div>
           
           <div className="mt-12 border-l-2 border-accent pl-4 animate-element">
-            <div className="technical-data">CAROTENOID-BASED</div>
-            <div className="technical-data">UV-FREE TECHNOLOGY</div>
-            <div className="technical-data">MULTIPLE FORMULATIONS</div>
+            <div className="technical-data">NO NEEDLES. NO PEPTIDES. JUST GLOW.</div>
+            <div className="technical-data">CLEAN ALTERNATIVE TO MELANOTAN</div>
+            <div className="technical-data">MADE IN USA</div>
           </div>
         </div>
       </div>

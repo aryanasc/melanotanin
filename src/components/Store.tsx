@@ -15,21 +15,21 @@ interface Product {
 const products: Product[] = [
   {
     id: "melanotanin-sunless-glow",
-    name: "Melanotanin™ Sunless Glow Blend",
+    name: "Melanotanin™ — Sunless Glow Carotenoid Blend",
     price: 39.99,
-    description: "Carotenoid Complex",
+    description: "The clean alternative to melanotan peptides",
     features: [
-      "Sunless, Natural-Looking Glow*",
-      "Premium Carotenoid Blend",
-      "Supports Skin Radiance & Even Tone*",
-      "Eye Health Support*",
-      "Antioxidants",
-      "No UV Exposure Needed",
-      "Great for Coloring*"
+      "Sunless natural-looking glow*",
+      "25,000 IU beta-carotene per serving (833% DV)",
+      "Supports skin radiance & even tone*",
+      "Eye health support (lutein + zeaxanthin synergy)*",
+      "Antioxidant & UV protection*",
+      "No UV exposure needed",
+      "Vegan, non-GMO, made in USA"
     ],
     image: stickerImage,
     checkoutUrl: "https://melanotanin.org/cart/51455229001959:1",
-    servings: "60 Capsules | 30 Servings"
+    servings: "60 Capsules | 30-Day Supply"
   }
 ];
 
@@ -79,8 +79,8 @@ const Store: React.FC = () => {
     <section id="store" className="py-20 min-h-screen" style={{ backgroundColor: '#000000' }}>
       <div className="container-section">
         <div className="mb-12">
-          <h2 className="section-title">AVAILABLE PROTOCOL</h2>
-          <p className="text-sm opacity-70 tracking-wider">PREMIUM CAROTENOID FORMULATION</p>
+          <h2 className="section-title">THE SUNLESS GLOW SUPPLEMENT</h2>
+          <p className="text-sm opacity-70 tracking-wider">CLINICAL-DOSE CAROTENOID BLEND</p>
         </div>
 
         <div className="max-w-6xl mx-auto">
@@ -153,13 +153,14 @@ const Store: React.FC = () => {
                     </a>
 
                     <div className="mt-4 text-xs opacity-60 text-center">
-                      🔥 FREE SHIPPING ON ORDERS OVER $75 | 90-DAY MONEY BACK GUARANTEE
+                      🔥 FREE SHIPPING ON ORDERS OVER $75 | 60-DAY MONEY BACK GUARANTEE
                     </div>
                   </div>
 
                   <div className="text-xs opacity-50 pt-4 border-t border-white/10">
                     *These statements have not been evaluated by the Food and Drug Administration. 
-                    This product is not intended to diagnose, treat, cure, or prevent any disease.
+                    This product is not intended to diagnose, treat, cure, or prevent any disease. 
+                    Take 2 capsules daily with healthy fats for optimal absorption.
                   </div>
                 </div>
               </div>
