@@ -140,6 +140,77 @@ const ProductSection: React.FC = () => {
   );
 };
 
+const VideoSection: React.FC = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const container = containerRef.current;
+    if (!video || !container) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().then(() => setIsPlaying(true)).catch(() => {});
+        } else {
+          video.pause();
+          setIsPlaying(false);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, []);
+
+  const togglePlay = () => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      video.play().then(() => setIsPlaying(true)).catch(() => {});
+    } else {
+      video.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  return (
+    <section className="py-28 md:py-36 bg-cream">
+      <div className="container-section flex justify-center">
+        <div
+          ref={containerRef}
+          className="scroll-fade relative w-full max-w-[320px] md:max-w-[360px] cursor-pointer rounded-lg overflow-hidden shadow-[0_12px_48px_rgba(0,0,0,0.08)]"
+          onClick={togglePlay}
+        >
+          <video
+            ref={videoRef}
+            src="/aryan.mov"
+            muted
+            loop
+            playsInline
+            className="w-full h-auto block"
+          />
+
+          {/* Play button overlay */}
+          <div
+            className={`absolute inset-0 flex items-center justify-center bg-black/10 transition-opacity duration-500 ${
+              isPlaying ? 'opacity-0 pointer-events-none' : 'opacity-100'
+            }`}
+          >
+            <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center shadow-lg">
+              <svg className="w-6 h-6 text-warm-black ml-1" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Store: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   useScrollFade(sectionRef);
@@ -255,6 +326,9 @@ const Store: React.FC = () => {
           </p>
         </div>
       </section>
+
+      {/* ── Video Section ── */}
+      <VideoSection />
 
     </div>
   );

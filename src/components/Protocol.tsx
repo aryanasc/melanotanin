@@ -1,109 +1,121 @@
-import React from 'react';
-import { Clock, Target, Beaker, ArrowRight } from 'lucide-react';
+import React, { useEffect } from 'react';
 
-const Protocol: React.FC = () => {
+const Privacy: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    document.title = 'Privacy Policy — Melanotanin';
+  }, []);
+
   return (
-    <section id="how-it-works" className="py-20 bg-darker">
-      <div className="container-section">
-        <div className="technical-tag">HOW IT WORKS</div>
-        
-        <h2 className="section-title">
-          THE PROCESS
-        </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <div className="technical-card">
-            <Clock className="text-accent mb-4" size={32} />
-            <div className="text-xs tracking-wider mb-2 text-accent">STEP 1</div>
-            <h3 className="text-xl mb-3">TAKE WITH FATS</h3>
-            <p className="text-sm opacity-80 mb-4">
-              Take 2 capsules daily with meals containing healthy fats for optimal absorption.
+    <section className="pt-32 pb-28 bg-cream">
+      <div className="container-section max-w-2xl">
+        <a href="#" className="inline-flex items-center gap-2 text-[13px] text-warm-grey hover:text-warm-black transition-colors duration-300 mb-10 group">
+          <svg className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M19 12H5m0 0l6-6m-6 6l6 6" /></svg>
+          Back
+        </a>
+        <p className="font-mono text-[11px] tracking-[0.2em] text-gold uppercase mb-4">
+          Legal
+        </p>
+        <h1 className="font-serif text-3xl md:text-4xl text-warm-black mb-12 font-normal">
+          Privacy Policy
+        </h1>
+        <p className="text-[13px] text-warm-grey mb-16">
+          Effective Date: January 1, 2026
+        </p>
+
+        <div className="space-y-10 text-[15px] text-warm-black/80 leading-[1.9]">
+          <div>
+            <h2 className="font-serif text-xl text-warm-black mb-3">Overview</h2>
+            <p>
+              Melanotanin ("we," "us," or "our") respects your privacy. This
+              Privacy Policy describes how we collect, use, and protect
+              information when you visit melanotanin.com (the "Site"). By using
+              the Site, you agree to the practices described below.
             </p>
-            <div className="progress-bar"></div>
           </div>
-          
-          <div className="technical-card">
-            <Target className="text-accent mb-4" size={32} />
-            <div className="text-xs tracking-wider mb-2 text-accent">STEP 2</div>
-            <h3 className="text-xl mb-3">ACCUMULATION</h3>
-            <p className="text-sm opacity-80 mb-4">
-              Carotenoids deposit in subcutaneous fat and accumulate in skin tissue over time.
+
+          <div>
+            <h2 className="font-serif text-xl text-warm-black mb-3">Information We Collect</h2>
+            <p className="mb-4">
+              We do not collect personal information directly through this Site.
+              When you click "Shop Now," "Add to Cart," or any checkout link,
+              you are redirected to our Shopify-hosted storefront, which is
+              governed by Shopify's own privacy policy.
             </p>
-            <div className="progress-bar"></div>
-          </div>
-          
-          <div className="technical-card">
-            <Beaker className="text-accent mb-4" size={32} />
-            <div className="text-xs tracking-wider mb-2 text-accent">STEP 3</div>
-            <h3 className="text-xl mb-3">VISIBLE RESULTS</h3>
-            <p className="text-sm opacity-80 mb-4">
-              Results typically visible within 14-21 days of consistent use. No UV exposure needed.
+            <p>
+              We may collect anonymous, aggregated analytics data (such as page
+              views, device type, and general geographic region) through
+              third-party analytics tools to understand how visitors use the
+              Site. This data does not identify you personally.
             </p>
-            <div className="progress-bar"></div>
           </div>
-        </div>
-        
-        <div className="bg-medium p-8 md:p-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <div>
-              <h3 className="text-xl mb-6">USAGE GUIDELINES</h3>
-              <ul className="space-y-4">
-                <li className="flex items-start">
-                  <ArrowRight className="text-accent mt-1 mr-2" size={16} />
-                  <span className="text-sm opacity-80">Take 2 capsules daily with healthy fats for optimal absorption</span>
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight className="text-accent mt-1 mr-2" size={16} />
-                  <span className="text-sm opacity-80">Store in a cool, dry place away from direct light</span>
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight className="text-accent mt-1 mr-2" size={16} />
-                  <span className="text-sm opacity-80">60 capsules | 30-day supply</span>
-                </li>
-                <li className="flex items-start">
-                  <ArrowRight className="text-accent mt-1 mr-2" size={16} />
-                  <span className="text-sm opacity-80">GMP certified, FDA-registered facility</span>
-                </li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-xl mb-6">WHAT YOU GET</h3>
-              <div className="space-y-6">
-                <div>
-                  <div className="flex justify-between text-sm mb-2">
-                    <span>Beta-Carotene</span>
-                    <span className="text-accent">25,000 IU</span>
-                  </div>
-                  <div className="h-1 bg-darker">
-                    <div className="h-full bg-accent" style={{ width: '100%' }}></div>
-                  </div>
-                  <div className="text-xs opacity-60 mt-1">833% Daily Value</div>
-                </div>
-                
-                <div>
-                  <div className="flex justify-between text-sm mb-2">
-                    <span>Lutein + Zeaxanthin</span>
-                    <span className="text-accent">12 mg</span>
-                  </div>
-                  <div className="h-1 bg-darker">
-                    <div className="h-full bg-accent" style={{ width: '100%' }}></div>
-                  </div>
-                  <div className="text-xs opacity-60 mt-1">Eye health support</div>
-                </div>
-                
-                <div>
-                  <div className="flex justify-between text-sm mb-2">
-                    <span>Lycopene</span>
-                    <span className="text-accent">7.5 mg</span>
-                  </div>
-                  <div className="h-1 bg-darker">
-                    <div className="h-full bg-accent" style={{ width: '100%' }}></div>
-                  </div>
-                  <div className="text-xs opacity-60 mt-1">Antioxidant support</div>
-                </div>
-              </div>
-            </div>
+
+          <div>
+            <h2 className="font-serif text-xl text-warm-black mb-3">Cookies</h2>
+            <p>
+              The Site may use cookies or similar technologies for basic
+              functionality and analytics. You can control cookie preferences
+              through your browser settings. Disabling cookies will not affect
+              your ability to browse the Site.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="font-serif text-xl text-warm-black mb-3">Third-Party Services</h2>
+            <p>
+              Purchases are processed through Shopify. When you proceed to
+              checkout, Shopify collects the information necessary to fulfill
+              your order, including your name, email, shipping address, and
+              payment details. Please review{' '}
+              <a
+                href="https://www.shopify.com/legal/privacy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gold hover:text-gold-dark transition-colors underline underline-offset-2"
+              >
+                Shopify's Privacy Policy
+              </a>{' '}
+              for details on how they handle your data.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="font-serif text-xl text-warm-black mb-3">Data Security</h2>
+            <p>
+              We take reasonable measures to protect the information associated
+              with the Site. However, no method of electronic transmission or
+              storage is completely secure, and we cannot guarantee absolute
+              security.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="font-serif text-xl text-warm-black mb-3">Children's Privacy</h2>
+            <p>
+              The Site is not directed to individuals under the age of 18. We do
+              not knowingly collect personal information from children.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="font-serif text-xl text-warm-black mb-3">Changes to This Policy</h2>
+            <p>
+              We may update this Privacy Policy from time to time. Any changes
+              will be reflected on this page with a revised effective date.
+            </p>
+          </div>
+
+          <div>
+            <h2 className="font-serif text-xl text-warm-black mb-3">Contact</h2>
+            <p>
+              If you have any questions about this Privacy Policy, contact us at{' '}
+              <a
+                href="mailto:aryan@melanotanin.com"
+                className="text-gold hover:text-gold-dark transition-colors underline underline-offset-2"
+              >
+                aryan@melanotanin.com
+              </a>.
+            </p>
           </div>
         </div>
       </div>
@@ -111,4 +123,4 @@ const Protocol: React.FC = () => {
   );
 };
 
-export default Protocol;
+export default Privacy;
