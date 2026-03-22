@@ -4,16 +4,20 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        mono: ['"Space Mono"', 'monospace'],
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
       },
       colors: {
-        dark: '#121212',
-        darker: '#0A0A0A',
-        medium: '#1A1A1A',
-        light: '#F5F5F5',
-        white: '#F5F5F5',
-        accent: '#DAA520',
-        accentLight: '#F0C05A',
+        cream: '#FAF7F2',
+        warm: {
+          black: '#1A1A1A',
+          grey: '#6B6560',
+          light: '#E8E4DE',
+        },
+        gold: '#C8A24E',
+        'gold-dark': '#B08D3A',
+        pink: '#D48B8B',
       },
       fontSize: {
         'xs': '0.75rem',
@@ -25,15 +29,13 @@ export default {
         '3xl': '1.875rem',
         '4xl': '2.25rem',
         '5xl': '3rem',
+        '6xl': '3.75rem',
+        '7xl': '4.5rem',
       },
       letterSpacing: {
         widest: '0.15em',
         wider: '0.1em',
         wide: '0.05em',
-      },
-      animation: {
-        'fade-in': 'fadeIn 0.8s ease-in-out forwards',
-        'progress': 'progressBar 2s ease-out forwards',
       },
     },
   },
