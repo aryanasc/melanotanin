@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import bottleImage from '../assets/STICKER.png';
+import oneFlamingoImg from '../assets/oneflamingo.jpeg';
 
 const ingredients = [
   { name: 'Beta-Carotene', dose: '25,000 IU', detail: 'The primary carotenoid responsible for warm skin tone' },
@@ -53,21 +54,49 @@ const Store: React.FC = () => {
       </section>
 
       {/* ── Quote Section ── */}
-      <section className="py-28 md:py-40" style={{ backgroundColor: '#F5F0EA' }}>
-        <div className="container-section max-w-3xl text-center">
-          <div className="scroll-fade">
-            <p className="font-serif italic text-xl md:text-2xl lg:text-[1.7rem] text-warm-black/85 leading-[1.8] md:leading-[1.9]">
-              "Deeper pink flamingos are generally healthier and more effective
-              at metabolizing carotenoids than their paler counterparts. These
-              carotenoid-rich pigments, derived from a diet of algae and
-              crustaceans, are metabolized in the liver — meaning a brighter
-              pink color directly reflects a healthier, better-fed, and more
-              dominant bird."
-            </p>
-            <p className="mt-10 font-sans text-[11px] tracking-[0.25em] text-warm-grey/70 uppercase">
-              Behavioral Ecology, Oxford Academic
-            </p>
+      <section className="relative overflow-hidden" style={{ backgroundColor: '#F5F0EA' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px] md:min-h-[600px]">
+
+          {/* Left — Image */}
+          <div className="scroll-fade relative h-72 lg:h-auto overflow-hidden">
+            <img
+              src={oneFlamingoImg}
+              alt="Flamingo in flight"
+              className="absolute inset-0 w-full h-full object-cover object-center"
+            />
+            {/* Soft edge fade into the quote side */}
+            <div
+              className="absolute inset-0 hidden lg:block"
+              style={{
+                background: 'linear-gradient(to right, transparent 60%, #F5F0EA)',
+              }}
+            />
+            {/* Bottom fade on mobile */}
+            <div
+              className="absolute inset-0 lg:hidden"
+              style={{
+                background: 'linear-gradient(to bottom, transparent 50%, #F5F0EA)',
+              }}
+            />
           </div>
+
+          {/* Right — Quote */}
+          <div className="scroll-fade flex items-center px-8 md:px-16 lg:px-20 py-20 md:py-28">
+            <div className="max-w-lg">
+              <p className="font-serif italic text-xl md:text-2xl lg:text-[1.65rem] text-warm-black/85 leading-[1.85]">
+                "Deeper pink flamingos are generally healthier and more effective
+                at metabolizing carotenoids than their paler counterparts. These
+                carotenoid-rich pigments, derived from a diet of algae and
+                crustaceans, are metabolized in the liver — meaning a brighter
+                pink color directly reflects a healthier, better-fed, and more
+                dominant bird."
+              </p>
+              <p className="mt-10 font-sans text-[11px] tracking-[0.25em] text-warm-grey/60 uppercase">
+                Behavioral Ecology, Oxford Academic
+              </p>
+            </div>
+          </div>
+
         </div>
       </section>
 

@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
     >
       <div className="container-section flex justify-between items-center">
         <a href="#" className="font-serif text-lg tracking-[0.08em] text-warm-black transition-opacity hover:opacity-70">
-          MELANOTANIN<span className="text-gold text-[9px] align-top ml-0.5">™</span>
+          MELANOTANIN
         </a>
 
         <a
