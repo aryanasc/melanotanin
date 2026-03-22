@@ -6,6 +6,7 @@ import FAQ from './components/FormulaBreakdown';
 import Footer from './components/Footer';
 import Privacy from './components/Protocol';
 import Terms from './components/Acquire';
+import VideoSection from './components/StickerSection';
 
 function CookieBanner() {
   const [visible, setVisible] = useState(false);
@@ -79,30 +80,8 @@ function App() {
         <>
           <Hero />
           <Store />
-          <section className="py-28 md:py-36 bg-cream">
-            <div className="container-section">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start max-w-6xl mx-auto">
-                {/* Video */}
-                <div className="flex justify-center lg:sticky lg:top-28">
-                  <div className="w-full max-w-[340px] rounded-lg overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.08)]">
-                    <video
-                      controls
-                      playsInline
-                      preload="metadata"
-                      className="w-full h-auto block"
-                    >
-                      <source src="/aryan.mov" type="video/quicktime" />
-                      <source src="/aryan.mov" type="video/mp4" />
-                    </video>
-                  </div>
-                </div>
-                {/* FAQ */}
-                <div>
-                  <FAQ />
-                </div>
-              </div>
-            </div>
-          </section>
+          <VideoSection />
+          <FAQ />
         </>
       )}
       {page === 'privacy' && <Privacy />}

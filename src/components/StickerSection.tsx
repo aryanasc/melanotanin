@@ -1,73 +1,78 @@
-import React, { useEffect, useState } from 'react';
-import stickerImage from '../assets/STICKER.png';
+import React, { useEffect, useRef, useState } from 'react';
 
-const StickerSection: React.FC = () => {
-  const [offset, setOffset] = useState(0);
+const VideoSection: React.FC = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [scale, setScale] = useState(0.85);
+  const [radius, setRadius] = useState(20);
 
   useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
     const handleScroll = () => {
-      setOffset(window.pageYOffset);
+      const rect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Progress: 0 when section top hits bottom of viewport, 1 when section top hits top
+      const progress = Math.max(0, Math.min(1, 1 - rect.top / windowHeight));
+
+      // Scale from 0.85 to 1
+      setScale(0.85 + progress * 0.15);
+      // Border radius from 20 to 0
+      setRadius(Math.max(0, 20 - progress * 20));
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return (
-    <section className="py-20 bg-dark relative overflow-hidden">
-      {/* Dynamic Grid Background */}
-      <div 
-        className="absolute inset-0 z-0"
-        style={{
-          transform: `translateY(${offset * 0.3}px)`,
-          backgroundImage: `
-            linear-gradient(to right, rgba(218, 165, 32, 0.1) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(218, 165, 32, 0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '150px 150px',
-        }}
-      />
-      
-      {/* Accent Lines */}
-      <div 
-        className="absolute inset-0 z-0 opacity-10"
-        style={{
-          transform: `translateY(${offset * 0.2}px)`,
-          background: `
-            repeating-linear-gradient(
-              45deg,
-              transparent,
-              transparent 100px,
-              rgba(218, 165, 32, 0.1) 200px,
-              rgba(218, 165, 32, 0.1) 400px
-            )
-          `
-        }}
-      />
+  // Pause when out of view
+  useEffect(() => {
+    const video = videoRef.current;
+    const section = sectionRef.current;
+    if (!video || !section) return;
 
-      <div className="container-section relative z-10">
-        <div className="flex flex-col items-center text-center">
-          <div className="technical-tag mb-8">PREMIUM BRANDING</div>
-          
-          <div className="max-w-2xl">
-            <img
-              src={stickerImage}
-              alt="Melanotanin Premium Sticker"
-              className="w-full h-auto max-w-md mx-auto transform transition-transform hover:scale-105 duration-500"
-            />
-          </div>
-          
-          <div className="mt-12 max-w-xl">
-            <h3 className="text-2xl mb-6">PREMIUM IDENTITY</h3>
-            <p className="text-sm opacity-80 leading-relaxed">
-              Each bottle comes with our premium identity marker. 
-              A symbol of commitment to optimizing your appearance without UV damage.
-            </p>
-          </div>
-        </div>
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          video.pause();
+        }
+      },
+      { threshold: 0.1 }
+    );
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section ref={sectionRef} className="py-16 md:py-24 bg-cream">
+      <div
+        className="mx-auto overflow-hidden"
+        style={{
+          maxWidth: '420px',
+          transform: `scale(${scale})`,
+          borderRadius: `${radius}px`,
+          transition: 'border-radius 0.1s linear',
+          willChange: 'transform, border-radius',
+          boxShadow: '0 16px 60px rgba(0,0,0,0.1)',
+        }}
+      >
+        <video
+          ref={videoRef}
+          controls
+          playsInline
+          preload="metadata"
+          className="w-full h-auto block bg-black"
+          style={{ aspectRatio: '9/16' }}
+        >
+          <source src="/aryan.mov" type="video/quicktime" />
+          <source src="/aryan.mov" type="video/mp4" />
+        </video>
       </div>
     </section>
   );
 };
 
-export default StickerSection;
+export default VideoSection;

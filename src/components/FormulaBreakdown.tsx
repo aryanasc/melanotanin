@@ -31,9 +31,9 @@ const FAQ: React.FC = () => {
   };
 
   return (
-    <div>
-      <div>
-        <h2 className="font-serif text-3xl md:text-4xl text-warm-black text-center lg:text-left mb-16 font-normal">
+    <section className="py-28 md:py-36 bg-cream">
+      <div className="container-section max-w-2xl">
+        <h2 className="font-serif text-3xl md:text-4xl text-warm-black text-center mb-20 font-normal">
           Questions
         </h2>
 
@@ -69,7 +69,7 @@ const FAQ: React.FC = () => {
           <div className="border-t border-warm-light/80" />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
