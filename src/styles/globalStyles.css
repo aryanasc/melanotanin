@@ -5,31 +5,40 @@
 @layer base {
   html {
     @apply scroll-smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 5px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #FAF7F2;
+    background: transparent;
   }
 
   ::-webkit-scrollbar-thumb {
     background: #C8A24E;
-    border-radius: 3px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: #B08D3A;
+    border-radius: 10px;
   }
 
   body {
     @apply bg-cream text-warm-black font-sans antialiased;
+    font-feature-settings: "kern" on, "liga" on;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: rgba(200, 162, 78, 0.2);
+    color: #1A1A1A;
   }
 }
 
@@ -39,22 +48,29 @@
   }
 
   .btn-gold {
-    @apply bg-gold text-white font-sans font-medium tracking-wider py-3 px-8
-    transition-all duration-300 hover:bg-gold-dark inline-flex items-center justify-center
-    text-sm uppercase rounded-sm;
+    @apply bg-gold text-white font-sans font-medium tracking-[0.12em] py-3.5 px-10
+    transition-all duration-500 ease-out hover:bg-gold-dark inline-flex items-center justify-center
+    text-xs uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  .btn-gold:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(200, 162, 78, 0.3);
   }
 
   .btn-outline {
-    @apply border border-warm-black/20 text-warm-black font-sans font-medium tracking-wider py-3 px-8
-    transition-all duration-300 hover:border-gold hover:text-gold
-    text-sm uppercase rounded-sm;
+    @apply border border-warm-black/15 text-warm-black font-sans font-medium tracking-wider py-3.5 px-10
+    transition-all duration-500 hover:border-gold hover:text-gold
+    text-xs uppercase;
   }
 }
 
+/* Scroll-triggered fade in */
 .fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
+  animation: fadeIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(24px);
 }
 
 @keyframes fadeIn {
@@ -62,4 +78,12 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Subtle divider styling */
+.section-divider {
+  @apply mx-auto;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #C8A24E, transparent);
 }

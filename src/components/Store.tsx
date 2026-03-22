@@ -22,7 +22,7 @@ function useScrollFade(ref: React.RefObject<HTMLElement | null>) {
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
     );
     els.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
@@ -35,96 +35,114 @@ const Store: React.FC = () => {
 
   return (
     <div ref={sectionRef}>
+
       {/* ── Story Section ── */}
-      <section className="py-24 md:py-32 bg-cream">
-        <div className="container-section max-w-3xl text-center">
-          <p className="scroll-fade font-serif text-2xl md:text-3xl lg:text-4xl text-warm-black leading-relaxed">
-            Flamingos aren't born pink.<br className="hidden md:block" />
+      <section className="py-28 md:py-36 bg-cream">
+        <div className="container-section max-w-2xl text-center">
+          <p className="scroll-fade font-serif text-2xl md:text-3xl lg:text-[2.5rem] text-warm-black leading-[1.5] md:leading-[1.6]">
+            Flamingos aren't born pink.{' '}
+            <br className="hidden md:block" />
             They become it. From what they eat.
           </p>
-          <p className="scroll-fade mt-8 text-lg md:text-xl text-warm-grey leading-relaxed">
+          <p className="scroll-fade mt-10 text-base md:text-lg text-warm-grey leading-[1.8]">
             That's carotenoids. And that's exactly what Melanotanin is.
-            Five of them. Clinically dosed. Your skin gets warmer week by week.
-            From the inside out.
+            Five of them. Clinically dosed. Your skin gets warmer
+            week by week. From the inside out.
           </p>
         </div>
       </section>
 
-      {/* ── Divider ── */}
-      <div className="container-section">
-        <div className="border-t border-warm-light" />
-      </div>
+      {/* ── Quote Section ── */}
+      <section className="py-28 md:py-40" style={{ backgroundColor: '#F5F0EA' }}>
+        <div className="container-section max-w-3xl text-center">
+          <div className="scroll-fade">
+            <p className="font-serif italic text-xl md:text-2xl lg:text-[1.7rem] text-warm-black/85 leading-[1.8] md:leading-[1.9]">
+              "Deeper pink flamingos are generally healthier and more effective
+              at metabolizing carotenoids than their paler counterparts. These
+              carotenoid-rich pigments, derived from a diet of algae and
+              crustaceans, are metabolized in the liver — meaning a brighter
+              pink color directly reflects a healthier, better-fed, and more
+              dominant bird."
+            </p>
+            <p className="mt-10 font-sans text-[11px] tracking-[0.25em] text-warm-grey/70 uppercase">
+              Behavioral Ecology, Oxford Academic
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Gold Divider ── */}
+      <div className="section-divider" />
 
       {/* ── Formula Section ── */}
-      <section className="py-24 md:py-32 bg-cream">
-        <div className="container-section max-w-4xl">
-          <p className="scroll-fade text-xs font-mono tracking-widest text-gold uppercase mb-4 text-center">
+      <section className="py-28 md:py-36 bg-cream">
+        <div className="container-section max-w-3xl">
+          <p className="scroll-fade font-mono text-[11px] tracking-[0.2em] text-gold uppercase mb-5 text-center">
             The Formula
           </p>
-          <h2 className="scroll-fade font-serif text-3xl md:text-4xl text-warm-black text-center mb-16">
+          <h2 className="scroll-fade font-serif text-3xl md:text-4xl text-warm-black text-center mb-20 font-normal">
             What's Inside
           </h2>
 
-          <div className="space-y-0">
+          <div>
             {ingredients.map((ing, i) => (
               <div
                 key={ing.name}
-                className="scroll-fade border-t border-warm-light py-8 md:py-10 grid grid-cols-1 md:grid-cols-[1fr_auto_2fr] gap-4 md:gap-8 items-baseline"
-                style={{ animationDelay: `${i * 0.08}s` }}
+                className="scroll-fade border-t border-warm-light/80 py-7 md:py-9 flex flex-col md:flex-row md:items-baseline gap-2 md:gap-0"
+                style={{ animationDelay: `${i * 0.06}s` }}
               >
-                <h3 className="font-serif text-xl md:text-2xl text-warm-black">
+                <h3 className="font-serif text-lg md:text-xl text-warm-black md:w-[200px] flex-shrink-0">
                   {ing.name}
                 </h3>
-                <span className="font-mono text-sm text-gold tracking-wide">
+                <span className="font-mono text-[13px] text-gold tracking-wide md:w-[120px] flex-shrink-0">
                   {ing.dose}
                 </span>
-                <p className="text-warm-grey text-sm md:text-base">
+                <p className="text-warm-grey text-sm leading-relaxed md:pl-4">
                   {ing.detail}
                 </p>
               </div>
             ))}
-            <div className="border-t border-warm-light" />
+            <div className="border-t border-warm-light/80" />
           </div>
 
-          <p className="scroll-fade mt-12 text-center font-serif text-xl md:text-2xl italic text-warm-black">
+          <p className="scroll-fade mt-16 text-center font-serif text-xl md:text-2xl italic text-warm-black/80">
             Clinical doses. Not fairy dust.
           </p>
         </div>
       </section>
 
-      {/* ── Divider ── */}
-      <div className="container-section">
-        <div className="border-t border-warm-light" />
-      </div>
+      {/* ── Gold Divider ── */}
+      <div className="section-divider" />
 
       {/* ── Product Section ── */}
-      <section id="store" className="py-24 md:py-32 bg-cream">
+      <section id="store" className="py-28 md:py-36 bg-cream">
         <div className="container-section">
-          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+
             {/* Bottle Image */}
             <div className="scroll-fade flex justify-center">
-              <div className="w-64 md:w-80">
+              <div className="w-56 md:w-72 lg:w-80">
                 <img
                   src={bottleImage}
                   alt="Melanotanin Sunless Glow Blend"
-                  className="w-full h-auto object-contain"
+                  className="w-full h-auto object-contain drop-shadow-[0_16px_48px_rgba(0,0,0,0.06)]"
                 />
               </div>
             </div>
 
             {/* Product Info */}
             <div className="scroll-fade">
-              <p className="text-xs font-mono tracking-widest text-gold uppercase mb-3">
+              <p className="font-mono text-[11px] tracking-[0.2em] text-gold uppercase mb-4">
                 Sunless Glow Carotenoid Blend
               </p>
-              <h2 className="font-serif text-3xl md:text-4xl text-warm-black mb-2">
-                Melanotanin<span className="text-gold">™</span>
+              <h2 className="font-serif text-3xl md:text-4xl text-warm-black mb-3 font-normal">
+                Melanotanin<span className="text-gold align-top text-[0.4em] ml-0.5">™</span>
               </h2>
-              <p className="text-warm-grey mb-6">
+              <p className="text-warm-grey text-base leading-relaxed mb-8">
                 The clean alternative to melanotan peptides.
               </p>
 
-              <div className="text-4xl font-serif text-warm-black mb-8">
+              <div className="font-serif text-4xl text-warm-black mb-10">
                 $39.99
               </div>
 
@@ -132,21 +150,25 @@ const Store: React.FC = () => {
                 href="https://melanotanin.org/cart/51455229001959:1"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-gold w-full md:w-auto text-center mb-8 block md:inline-flex"
+                className="btn-gold w-full md:w-auto text-center mb-10 block md:inline-flex"
               >
                 CHECKOUT
               </a>
 
               {/* Details */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm text-warm-grey mb-8">
+              <div className="flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-warm-grey mb-10">
                 <span>60 Capsules</span>
+                <span className="text-warm-light">|</span>
                 <span>30-Day Supply</span>
+                <span className="text-warm-light">|</span>
                 <span>Vegan</span>
+                <span className="text-warm-light">|</span>
                 <span>Non-GMO</span>
+                <span className="text-warm-light">|</span>
                 <span>Made in USA</span>
               </div>
 
-              <div className="border-t border-warm-light pt-6 text-sm text-warm-grey space-y-1">
+              <div className="border-t border-warm-light/80 pt-6 text-[13px] text-warm-grey space-y-2">
                 <p>Free shipping on orders over $75</p>
                 <p>60-day money back guarantee</p>
               </div>

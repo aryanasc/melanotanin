@@ -31,24 +31,24 @@ const FAQ: React.FC = () => {
   };
 
   return (
-    <section className="py-24 md:py-32 bg-cream">
+    <section className="py-28 md:py-36 bg-cream">
       <div className="container-section max-w-2xl">
-        <h2 className="font-serif text-3xl md:text-4xl text-warm-black text-center mb-16">
+        <h2 className="font-serif text-3xl md:text-4xl text-warm-black text-center mb-20 font-normal">
           Questions
         </h2>
 
-        <div className="space-y-0">
+        <div>
           {faqs.map((faq, i) => (
-            <div key={i} className="border-t border-warm-light">
+            <div key={i} className="border-t border-warm-light/80">
               <button
                 onClick={() => toggle(i)}
-                className="w-full py-6 flex justify-between items-center text-left group"
+                className="w-full py-7 flex justify-between items-center text-left group cursor-pointer"
               >
-                <span className="font-serif text-lg md:text-xl text-warm-black group-hover:text-gold transition-colors">
+                <span className="font-serif text-lg md:text-xl text-warm-black group-hover:text-gold transition-colors duration-300">
                   {faq.question}
                 </span>
                 <span
-                  className={`text-gold text-2xl transition-transform duration-300 ml-4 flex-shrink-0 ${
+                  className={`text-gold text-xl font-light transition-transform duration-500 ease-out ml-6 flex-shrink-0 ${
                     openIndex === i ? 'rotate-45' : ''
                   }`}
                 >
@@ -56,17 +56,17 @@ const FAQ: React.FC = () => {
                 </span>
               </button>
               <div
-                className={`overflow-hidden transition-all duration-300 ${
-                  openIndex === i ? 'max-h-60 pb-6' : 'max-h-0'
+                className={`overflow-hidden transition-all duration-500 ease-out ${
+                  openIndex === i ? 'max-h-60 pb-8' : 'max-h-0'
                 }`}
               >
-                <p className="text-warm-grey text-sm md:text-base leading-relaxed">
+                <p className="text-warm-grey text-sm md:text-base leading-[1.8] pr-12">
                   {faq.answer}
                 </p>
               </div>
             </div>
           ))}
-          <div className="border-t border-warm-light" />
+          <div className="border-t border-warm-light/80" />
         </div>
       </div>
     </section>
