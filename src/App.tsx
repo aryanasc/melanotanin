@@ -1,17 +1,3 @@
-<<<<<<< Updated upstream
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import HowItWorks from './pages/HowItWorks';
-
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/how-it-works" element={<HowItWorks />} />
-      </Routes>
-    </BrowserRouter>
-=======
 import React, { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
@@ -32,7 +18,6 @@ function App() {
       <FAQ />
       <Footer />
     </div>
->>>>>>> Stashed changes
   );
 }
 

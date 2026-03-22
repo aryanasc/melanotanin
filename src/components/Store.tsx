@@ -1,45 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import bottleImage from '../assets/STICKER.png';
 
-<<<<<<< Updated upstream
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  description: string;
-  features: string[];
-  image: string;
-  checkoutUrl: string;
-  servings: string;
-}
-
-const products: Product[] = [
-  {
-    id: "melanotanin-sunless-glow",
-    name: "Melanotanin™ — Sunless Glow Carotenoid Blend",
-    price: 39.99,
-    description: "The clean alternative to melanotan peptides",
-    features: [
-      "Sunless natural-looking glow*",
-      "25,000 IU beta-carotene per serving (833% DV)",
-      "Supports skin radiance & even tone*",
-      "Eye health support (lutein + zeaxanthin synergy)*",
-      "Antioxidant & UV protection*",
-      "No UV exposure needed",
-      "Vegan, non-GMO, made in USA"
-    ],
-    image: stickerImage,
-    checkoutUrl: "https://melanotanin.org/cart/51455229001959:1",
-    servings: "60 Capsules | 30-Day Supply"
-  }
-=======
 const ingredients = [
   { name: 'Beta-Carotene', dose: '25,000 IU', detail: 'The primary carotenoid responsible for warm skin tone' },
   { name: 'Lycopene', dose: '7.5 mg', detail: 'Red pigment. Powerful antioxidant. Deeper undertone.' },
   { name: 'Lutein', dose: '10 mg', detail: 'Supports eye health and skin radiance' },
   { name: 'Zeaxanthin', dose: '2 mg', detail: 'Enhances glow effect and antioxidant protection' },
   { name: 'Vitamin E', dose: '12.39 mg', detail: 'Protects carotenoids from oxidation' },
->>>>>>> Stashed changes
 ];
 
 function useScrollFade(ref: React.RefObject<HTMLElement | null>) {
@@ -67,13 +34,6 @@ const Store: React.FC = () => {
   useScrollFade(sectionRef);
 
   return (
-<<<<<<< Updated upstream
-    <section id="store" className="py-20 min-h-screen" style={{ backgroundColor: '#000000' }}>
-      <div className="container-section">
-        <div className="mb-12">
-          <h2 className="section-title">THE SUNLESS GLOW SUPPLEMENT</h2>
-          <p className="text-sm opacity-70 tracking-wider">CLINICAL-DOSE CAROTENOID BLEND</p>
-=======
     <div ref={sectionRef}>
       {/* ── Story Section ── */}
       <section className="py-24 md:py-32 bg-cream">
@@ -87,7 +47,6 @@ const Store: React.FC = () => {
             Five of them. Clinically dosed. Your skin gets warmer week by week.
             From the inside out.
           </p>
->>>>>>> Stashed changes
         </div>
       </section>
 
@@ -127,19 +86,6 @@ const Store: React.FC = () => {
             <div className="border-t border-warm-light" />
           </div>
 
-<<<<<<< Updated upstream
-                    <div className="mt-4 text-xs opacity-60 text-center">
-                      🔥 FREE SHIPPING ON ORDERS OVER $75 | 60-DAY MONEY BACK GUARANTEE
-                    </div>
-                  </div>
-
-                  <div className="text-xs opacity-50 pt-4 border-t border-white/10">
-                    *These statements have not been evaluated by the Food and Drug Administration. 
-                    This product is not intended to diagnose, treat, cure, or prevent any disease. 
-                    Take 2 capsules daily with healthy fats for optimal absorption.
-                  </div>
-                </div>
-=======
           <p className="scroll-fade mt-12 text-center font-serif text-xl md:text-2xl italic text-warm-black">
             Clinical doses. Not fairy dust.
           </p>
@@ -163,7 +109,6 @@ const Store: React.FC = () => {
                   alt="Melanotanin Sunless Glow Blend"
                   className="w-full h-auto object-contain"
                 />
->>>>>>> Stashed changes
               </div>
             </div>
 
