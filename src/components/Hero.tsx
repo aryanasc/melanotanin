@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import flamingoBg from '../assets/flamingos.jpeg';
+import tiktokIcon from '../assets/tiktok.svg';
 
 const Hero: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -27,7 +28,7 @@ const Hero: React.FC = () => {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-[100svh] flex items-center overflow-hidden"
+      className="relative min-h-[100svh] flex items-center overflow-hidden -mt-[88px] pt-[88px]"
     >
       {/* Background image with parallax */}
       <div
@@ -56,18 +57,24 @@ const Hero: React.FC = () => {
       />
 
       {/* Content */}
-      <div className="container-section w-full relative z-10 pt-28 pb-20">
+      <div className="container-section w-full relative z-10 pt-32 pb-20">
         <div className="max-w-lg">
-          <p className="animate-element font-mono text-[11px] tracking-[0.2em] text-gold uppercase mb-6">
-            Clinical-Dose Carotenoids
-          </p>
+          <a
+            href="https://www.tiktok.com/@melanotanin"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="animate-element inline-flex items-center gap-2 text-[13px] text-warm-grey/60 hover:text-warm-black transition-colors duration-300 mb-6 group"
+          >
+            <img src={tiktokIcon} alt="" className="w-4 h-4 opacity-50 group-hover:opacity-80 transition-opacity duration-300" />
+            <span>@melanotanin</span>
+          </a>
 
           <h1 className="animate-element font-serif text-[clamp(2.8rem,6vw,4.5rem)] text-warm-black leading-[1.05] mb-8 font-normal">
             Glow From<br />Within
           </h1>
 
           <p className="animate-element text-warm-grey text-lg md:text-xl leading-[1.7] mb-12 max-w-sm">
-            The same mechanism that makes flamingos pink — formulated for humans.
+            The same mechanism that makes flamingos pink. Formulated for humans.
           </p>
 
           <a

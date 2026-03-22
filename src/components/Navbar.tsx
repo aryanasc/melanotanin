@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
         scrolled
           ? 'py-3 backdrop-blur-md bg-cream/90 shadow-[0_1px_0_rgba(0,0,0,0.04)]'
-          : 'py-6 bg-cream'
+          : 'py-6 bg-transparent'
       }`}
     >
       <div className="container-section flex justify-between items-center">
@@ -28,9 +28,9 @@ const Navbar: React.FC = () => {
           href="https://melanotanin.org/cart/51455229001959:1"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-gold text-[10px] py-2.5 px-7"
+          className="btn-gold !text-[10px] !py-2.5 !px-7"
         >
-          SHOP
+          ORDER NOW
         </a>
       </div>
     </header>

@@ -48,15 +48,25 @@
   }
 
   .btn-gold {
-    @apply bg-gold text-white font-sans font-medium tracking-[0.12em] py-3.5 px-10
-    transition-all duration-500 ease-out hover:bg-gold-dark inline-flex items-center justify-center
+    @apply font-sans font-medium inline-flex items-center justify-center
     text-xs uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.18em;
+    padding: 16px 40px;
+    color: #FAF7F2;
+    background: #2C2522;
+    border: 1px solid rgba(44, 37, 34, 0.1);
+    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .btn-gold:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 20px rgba(200, 162, 78, 0.3);
+    background: #3D3330;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(44, 37, 34, 0.2), 0 2px 8px rgba(44, 37, 34, 0.1);
+  }
+
+  .btn-gold:active {
+    transform: translateY(0);
+    background: #231E1C;
   }
 
   .btn-outline {

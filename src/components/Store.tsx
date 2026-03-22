@@ -1,5 +1,7 @@
-import React, { useEffect, useRef } from 'react';
-import bottleImage from '../assets/STICKER.png';
+import React, { useEffect, useRef, useState } from 'react';
+import bottleFront from '../assets/bottle-front.png';
+import bottleBack from '../assets/bottle-back.png';
+import labelImage from '../assets/STICKER.png';
 import oneFlamingoImg from '../assets/oneflamingo.jpeg';
 
 const ingredients = [
@@ -30,12 +32,126 @@ function useScrollFade(ref: React.RefObject<HTMLElement | null>) {
   }, [ref]);
 }
 
+const productImages = [
+  { src: bottleFront, alt: 'Melanotanin bottle front' },
+  { src: bottleBack, alt: 'Melanotanin supplement facts' },
+  { src: labelImage, alt: 'Melanotanin full label' },
+];
+
+const ProductSection: React.FC = () => {
+  const [activeImage, setActiveImage] = useState(0);
+
+  return (
+    <section id="store" className="py-28 md:py-36 bg-cream">
+      <div className="container-section">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-12 lg:gap-20">
+
+          {/* Left — Image gallery */}
+          <div className="scroll-fade flex flex-row gap-4 lg:gap-6">
+            {/* Thumbnails */}
+            <div className="flex flex-col gap-3 flex-shrink-0">
+              {productImages.map((img, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveImage(i)}
+                  className={`w-16 h-16 md:w-20 md:h-20 border-2 rounded-sm overflow-hidden transition-all duration-300 cursor-pointer flex-shrink-0 ${
+                    activeImage === i
+                      ? 'border-gold'
+                      : 'border-warm-light/60 hover:border-warm-grey/30'
+                  }`}
+                >
+                  <img
+                    src={img.src}
+                    alt={img.alt}
+                    className="w-full h-full object-contain p-1.5 bg-white"
+                  />
+                </button>
+              ))}
+            </div>
+
+            {/* Main image */}
+            <div className="flex-1 flex items-center justify-center bg-white rounded-sm min-h-[400px] md:min-h-[500px]">
+              <img
+                src={productImages[activeImage].src}
+                alt={productImages[activeImage].alt}
+                className="max-w-full max-h-[500px] object-contain p-8 md:p-12 transition-opacity duration-300"
+              />
+            </div>
+          </div>
+
+          {/* Right — Product info */}
+          <div className="scroll-fade flex flex-col justify-center">
+            <p className="font-mono text-[11px] tracking-[0.2em] text-gold uppercase mb-3">
+              Sunless Glow Carotenoid Blend
+            </p>
+
+            <h2 className="font-serif text-3xl md:text-[2.5rem] text-warm-black mb-4 font-normal leading-tight">
+              Melanotanin
+            </h2>
+
+            <p className="text-warm-grey text-[15px] leading-relaxed mb-8 max-w-sm">
+              The clean alternative to melanotan peptides. Clinical-dose
+              carotenoids that deposit in your skin and shift your undertone
+              warmer — from the inside out.
+            </p>
+
+            <div className="flex items-baseline gap-3 mb-8">
+              <span className="font-serif text-3xl md:text-4xl text-warm-black">$39.99</span>
+              <span className="text-[13px] text-warm-grey">/60 Capsules</span>
+            </div>
+
+            <a
+              href="https://melanotanin.org/cart/51455229001959:1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gold w-full text-center mb-8"
+            >
+              ADD TO CART
+            </a>
+
+            {/* Product details */}
+            <div className="space-y-4 mb-8">
+              <div className="flex items-center gap-3 text-[13px] text-warm-black">
+                <svg className="w-4 h-4 text-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                <span>60 Capsules — 30-Day Supply</span>
+              </div>
+              <div className="flex items-center gap-3 text-[13px] text-warm-black">
+                <svg className="w-4 h-4 text-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                <span>Vegan &amp; Non-GMO</span>
+              </div>
+              <div className="flex items-center gap-3 text-[13px] text-warm-black">
+                <svg className="w-4 h-4 text-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                <span>Made in USA — GMP Certified</span>
+              </div>
+              <div className="flex items-center gap-3 text-[13px] text-warm-black">
+                <svg className="w-4 h-4 text-gold flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                <span>Take 2 capsules daily with healthy fats</span>
+              </div>
+            </div>
+
+            <div className="border-t border-warm-light/80 pt-6 space-y-2">
+              <p className="text-[12px] text-warm-grey">Free shipping on orders over $75</p>
+              <p className="text-[12px] text-warm-grey">60-day money back guarantee</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Store: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   useScrollFade(sectionRef);
 
   return (
     <div ref={sectionRef}>
+
+      {/* ── Product Section ── */}
+      <ProductSection />
+
+      {/* ── Gold Divider ── */}
+      <div className="section-divider" />
 
       {/* ── Story Section ── */}
       <section className="py-28 md:py-36 bg-cream">
@@ -140,71 +256,6 @@ const Store: React.FC = () => {
         </div>
       </section>
 
-      {/* ── Gold Divider ── */}
-      <div className="section-divider" />
-
-      {/* ── Product Section ── */}
-      <section id="store" className="py-28 md:py-36 bg-cream">
-        <div className="container-section">
-          <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-
-            {/* Bottle Image */}
-            <div className="scroll-fade flex justify-center">
-              <div className="w-56 md:w-72 lg:w-80">
-                <img
-                  src={bottleImage}
-                  alt="Melanotanin Sunless Glow Blend"
-                  className="w-full h-auto object-contain drop-shadow-[0_16px_48px_rgba(0,0,0,0.06)]"
-                />
-              </div>
-            </div>
-
-            {/* Product Info */}
-            <div className="scroll-fade">
-              <p className="font-mono text-[11px] tracking-[0.2em] text-gold uppercase mb-4">
-                Sunless Glow Carotenoid Blend
-              </p>
-              <h2 className="font-serif text-3xl md:text-4xl text-warm-black mb-3 font-normal">
-                Melanotanin<span className="text-gold align-top text-[0.4em] ml-0.5">™</span>
-              </h2>
-              <p className="text-warm-grey text-base leading-relaxed mb-8">
-                The clean alternative to melanotan peptides.
-              </p>
-
-              <div className="font-serif text-4xl text-warm-black mb-10">
-                $39.99
-              </div>
-
-              <a
-                href="https://melanotanin.org/cart/51455229001959:1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-gold w-full md:w-auto text-center mb-10 block md:inline-flex"
-              >
-                CHECKOUT
-              </a>
-
-              {/* Details */}
-              <div className="flex flex-wrap gap-x-6 gap-y-2 text-[13px] text-warm-grey mb-10">
-                <span>60 Capsules</span>
-                <span className="text-warm-light">|</span>
-                <span>30-Day Supply</span>
-                <span className="text-warm-light">|</span>
-                <span>Vegan</span>
-                <span className="text-warm-light">|</span>
-                <span>Non-GMO</span>
-                <span className="text-warm-light">|</span>
-                <span>Made in USA</span>
-              </div>
-
-              <div className="border-t border-warm-light/80 pt-6 text-[13px] text-warm-grey space-y-2">
-                <p>Free shipping on orders over $75</p>
-                <p>60-day money back guarantee</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
